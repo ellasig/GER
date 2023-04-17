@@ -4,28 +4,57 @@ body {
 }
 
 .topnav {
-    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+
     background-color: black;
-}
-/*
-.topnav a {
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 20px;
-}*/
-/*
-.topnav a:hover {
-    background-color: brown;
-    color: black;
+    padding: 16px;
 }
 
-.topnav a.active {
-    color: white;
-}*/
+.search-container {
+    display: flex;
+    align-items: center;
+
+
+}
+
+.topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+
+
+}
+
+.topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+    background: brown;
+}
+
+.favorites {
+    color: black;
+    background-color: black;
+    order: 1;
+
+}
+.profile {
+    background-color: brown;
+    float: right;
+    order: 1;
+}
+
+/*menu*/
 .dropbtn {
     background-color: black;
     color: white;
@@ -66,50 +95,5 @@ body {
 .dropdown:hover .dropbtn {
     background-color: white;
     color: black;
-}
-
-
-
-
-
-
-
-
-
-.topnav .search-container {
-    display: flex;
-    justify-content: center;
-}
-
-.topnav input[type=text] {
-    padding: 6px;
-    margin-top: 8px;
-    font-size: 17px;
-    border: none;
-
-}
-
-.topnav .search-container button {
-    float: right;
-    padding: 6px 10px;
-    margin-top: 8px;
-    margin-right: 16px;
-    background: #ddd;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-}
-
-.topnav .search-container button:hover {
-    background: brown;
-}
-
-.favorites {
-    color: black;
-    background-color: black;
-}
-.profile {
-    background-color: brown;
-    float: right;
 }
 /*nav ends*/
