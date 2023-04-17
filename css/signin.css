@@ -97,3 +97,26 @@ body {
     color: black;
 }
 /*nav ends*/
+
+
+article {
+    width: 350px;
+    height: 400px;
+    background-color: lightgray;
+    border: 1px solid black;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 80px;
+    gap: 20px;
+
+}
+
