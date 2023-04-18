@@ -1,104 +1,17 @@
-* {
-    box-sizing: border-box;
-}
-body {
-	margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
-}
-.topnav {
-	display: flex;
-	justify-content: space-between;
-
-	background-color: black;
-	padding: 16px;
-}
-
-.search-container {
-	display: flex;
-	align-items: center;
-}
-
-.topnav input[type='text'] {
-	padding: 6px;
-	margin-top: 8px;
-	font-size: 17px;
-	border: none;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-.topnav .search-container button {
-	float: right;
-	padding: 6px 10px;
-	margin-top: 8px;
-	margin-right: 16px;
-	background: #ddd;
-	font-size: 17px;
-	border: none;
-	cursor: pointer;
-    border-radius: 5px;
-}
-
-.topnav .search-container .search{
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-}
-
-.topnav .search-container button:hover {
-	background: brown;
-}
-
-.favorites {
-	color: black;
-	background-color: black;
-	order: 1;
-}
-.profile {
-	background-color: brown;
-	float: right;
-	order: 1;
-}
-
-/*menu*/
-.dropbtn {
-	background-color: black;
-	color: white;
-	padding: 16px;
-	font-size: 18px;
-	border: none;
-	cursor: pointer;
-}
-/*nav ends*/
-
-/* movie cards */
-.movie-card {
-	display: flex;
-	flex-direction: row;
-	margin: 4vh auto;
-	max-width: 800px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-	padding: 6vh 3%;
-	border-radius: 5px;
-}
-
-/* menu section */
-section {
-    display: none;
-    width: 100%;
+#main {
+    display: flex;
     height: 100vh;
-    background-color: black;
-    text-align: center;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
 }
-section i {
-    margin: 75px;
-    padding: 0;
-    color: white;
-    font-size: 25vw;
-}
-.menuButton {
-    background-color: black;
-    border: 0;
-    padding: 0;
+.loginCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    width: 50vw;
+    height: 80vh;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #FF2d2d;
 }

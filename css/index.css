@@ -1,16 +1,26 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato&display=swap');
+/*
+ Fonts in use
+ font-family: 'Abril Fatface', cursive;
+ font-family: 'Lato', sans-serif; 
+ */
 * {
     box-sizing: border-box;
 }
 body {
 	margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Lato', sans-serif; 
 }
 .topnav {
+    position: sticky;
+    top: 0  ;
 	display: flex;
 	justify-content: space-between;
-
 	background-color: black;
 	padding: 16px;
+    border-bottom: #ff2d2d;
+    border-style: solid;
 }
 
 .search-container {
@@ -45,7 +55,7 @@ body {
 }
 
 .topnav .search-container button:hover {
-	background: brown;
+	background: #ff2d2d;
 }
 
 .favorites {
@@ -54,7 +64,7 @@ body {
 	order: 1;
 }
 .profile {
-	background-color: brown;
+	background-color: #ff2d2d;
 	float: right;
 	order: 1;
 }
