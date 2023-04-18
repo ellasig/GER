@@ -4,8 +4,11 @@
     justify-content: center;
     align-items: center;
 }
-.loginCard {
+/* login and sign up buttons */
+
+#buttons {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #ddd;
@@ -14,4 +17,91 @@
     border-style: solid;
     border-radius: 5px;
     border-color: #FF2d2d;
+    
+    position: relative;
+}
+#buttons button{
+    font-size: larger;
+    padding: 5px;
+    margin: 10px;
+    width: 30%;
+    border-radius: 5px;
+}
+#buttons button:hover{
+    background-color: #FF2d2d;
+    border-radius: 5px;
+}
+
+/* login screen */
+#login {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    width: 50vw;
+    height: 80vh;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #FF2d2d;
+    
+    position: relative;
+}
+#login input{
+    font-size: larger;
+    padding: 5px;
+    margin: 5px;
+    width: 50%;
+    border-radius: 5px;
+}
+#login button{
+    font-size: large;
+    padding: 5px;
+    margin: 10px;
+    width: 30%;
+    border-radius: 5px;
+}
+#login button:hover{
+    background-color: #FF2d2d;
+    border-radius: 5px;
+}
+
+/* signup screen */
+#signup {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    width: 50vw;
+    height: 80vh;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #FF2d2d;
+    
+    position: relative;
+}
+#signup input{
+    font-size: larger;
+    padding: 5px;
+    margin: 5px;
+    width: 50%;
+    border-radius: 5px;
+}
+#signup button{
+    font-size: large;
+    padding: 5px;
+    margin: 10px;
+    width: 30%;
+    border-radius: 5px;
+}
+#signup button:hover{
+    background-color: #FF2d2d;
+    border-radius: 5px;
+}
+button#back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
 }
