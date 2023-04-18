@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MOVIES</title>
+		<link rel="stylesheet" type="text/css" href="css/movies.css" />
+        <script src="https://kit.fontawesome.com/bbf885e47c.js" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<div class="topnav">
+            <script src="js/nav.js"></script>
+			<div class="dropdown" style="float: left">
+				<button class="dropbtn" onclick="showDiv()"><i class="fa fa-bars"></i> MENU</button>
+				
+			</div>
+			<div class="search-container">
+				<input type="text" placeholder="Search for movie..." name="search" />
+				<button type="submit" class="search"><i class="fa fa-search"></i></button>
+				<a href="favorites.html">
+					<button class="favorites"><i class="fa fa-star-o"></i></button>
+				</a>
+				<a href="signin.html">
+					<button class="profile">
+						<i class="fa-solid fa-user"></i>
+					</button>
+				</a>
+			</div>
+		</div>
+        <section id="menu">
+            <div class="menu">
+                <a href="index.html"><button class="menuButton"><i class="fa-solid fa-house"></i></button></a>
+                <a href="movies.html"><button class="menuButton"><i class="fa-solid fa-clapperboard"></i></button></a>
+                <a href="tvshows.html"><button class="menuButton"><i class="fa-solid fa-tv"></i></button></a>
+            </div>
+        </section>
+		<!--content -->
+        <div id="main">
+            <div id="movie-container"></div>
+            <script src="js/movies.js"></script>
+        </div>
+	</body>
+</html>
