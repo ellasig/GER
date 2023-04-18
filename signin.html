@@ -36,7 +36,25 @@
         </section>
         <div id="main">
             <div class="loginCard">
-
+              <script src="js/signupPage.js"></script>
+              <div id="buttons">
+                <button onclick="showLogin()"><i class="fa-solid fa-key"></i> Login</button>
+                <button onclick="showSignup()"><i class="fa-solid fa-user-plus"></i> Sign up</button>
+              </div>
+              <div id="login">
+                <button id="back" onclick="showButtons()"><i class="fa-solid fa-angles-left"></i> Back</button>
+                <input type="text" placeholder="Username" name="username">
+                <input type="text" placeholder="Password" name="password">
+                <button type="submit"><i class="fa-solid fa-key"></i> Login</button>
+              </div>
+              <div id="signup">
+                <button id="back" onclick="showButtons()"><i class="fa-solid fa-angles-left"></i> Back</button>
+                <input type="text" placeholder="Username" name="username">
+                <input type="text" placeholder="Email" name="email">
+                <input type="text" placeholder="Password" name="password">
+                <input type="text" placeholder="Confirm Password" name="passwordCheck">
+                <button type="submit"><i class="fa-solid fa-user-plus"></i> Sign up</button>
+              </div>
             </div>
         </div>
 	</body>
