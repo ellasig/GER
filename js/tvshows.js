@@ -36,7 +36,6 @@ const tvShows = [
         trailerUrl: "https://www.youtube.com/watch?v=hDNNmeeJs1Q",
         length: "10 seasons",
     },
-
 ];
 
 const tvShowContainer = document.querySelector("#tv-show-container");
