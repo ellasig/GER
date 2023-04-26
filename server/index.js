@@ -2,18 +2,21 @@
 const express = require('express');
 const app = express();
 
-const dotenv = require('dotenv')
-dotenv.config()
+const dotenv = require('dotenv');
+dotenv.config();
+
+app.use(express.static(__dirname+'/uploads'));
 
 const port = 5000;
 
 app.use(express.json());
 
 const contentAction = require("./routes/contentAction");
-const ratingAction = require("./routes/ratingAction")
-const userAction = require("./routes/userAction")
+const ratingAction = require("./routes/ratingAction");
+const userAction = require("./routes/userAction");
+const imageAction = require("./routes/imageAction");
 
-const serverRoutes = [contentAction, ratingAction, userAction];
+const serverRoutes = [contentAction, ratingAction, userAction, imageAction];
 
 app.use("/", serverRoutes);
 
