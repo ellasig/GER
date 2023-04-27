@@ -24,15 +24,28 @@
 	display: flex;
 	flex-direction: column;
 }
-
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato&display=swap');
+/*
+ Fonts in use
+ font-family: 'Abril Fatface', cursive;
+ font-family: 'Lato', sans-serif;
+ */
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
 .movie-title {
 	font-size: 24px;
 	font-weight: bold;
 	margin-bottom: 10px;
 }
 
-.movie-year {
-	font-size: 18px;
+.movie-genre {
+	font-size: 15px;
 	font-weight: bold;
 	margin-bottom: 10px;
 }
