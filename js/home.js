@@ -55,6 +55,39 @@ async function getAllContent() {
             contentCard.appendChild(contentInfo);
 
             contentContainer.appendChild(contentCard);
+
+            //favorite Button
+
+            const favoriteButton = document.createElement("button");
+            favoriteButton.classList.add("favorite-button");
+            favoriteButton.innerHTML = '<i class="fas fa-heart"></i> Add to Favorites';
+
+            // Check if the movie is already in favorites
+            const isInFavorites = () => {
+                const contID = item.content_id;
+                return favorites.includes(content.contID);
+            };
+
+            // Toggle the button text based on whether the movie is in favorites
+            const toggleButtonText = () => {
+                if (isInFavorites()) {
+                    favoriteButton.innerHTML = '<i class="fas fa-heart"></i> Remove from Favorites';
+                    const varUser = item.user_id; // KESKEN itemillä ei ole user_id. user_id tarvitaan.
+                    const varContent = item.content_id;
+                    const varUserRate = 1; // EI VÄLTTÄMÄTTÄ TARVITSE. jos hard koodaa +1 in /rateContent.
+                    module.exports = userID;
+                    module.exports = contentID;
+                    module.exports = userRating;
+                    fetch("http://localhost:3000/rateContent");
+                } else {
+                    favoriteButton.innerHTML = '<i class="fas fa-heart"></i> Add to Favorites';
+
+                    fetch("http://localhost:3000/unrateContent");
+                }
+            };
+
+            toggleButtonText(); // Set the initial button text based on whether the movie is in favorites
+
         });
     } catch (error) {
         console.error(error);
