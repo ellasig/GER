@@ -1,6 +1,6 @@
 const express = require('express');
 
-const conn = require("./mysql");
+const pool = require("../routes/mysql");
 const {stringify} = require('nodemon/lib/utils');
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.put('/addUser', function (req, res) {
     let sql = "INSERT INTO users (username, email, pass, isAdmin) VALUES (?,?,?,0)";
 
     try {
-      conn.query(sql, [req.body.username, req.body.email, hash], function (err) {
+      pool.query(sql, [req.body.username, req.body.email, hash], function (err) {
         if (err) {
           res.status(400).send({
             text: "Error adding user"
@@ -37,7 +37,7 @@ router.patch('/editUser', function (req, res) {
 
   hashPass = hashPass;
 
-  conn.query(sql, [req.body.username, req.body.email, hashPass], function (err, result) {
+  pool.query(sql, [req.body.username, req.body.email, hashPass], function (err, result) {
     if (err) {
       res.status(400).send({
         text: "Error editing user"
@@ -84,7 +84,7 @@ function getHash(body) {
 
   // Returns a promise with hash
   return new Promise(function (resolve) {
-    conn.query(sql, function (err, result) {
+    pool.query(sql, function (err, result) {
       if (err) throw err;
       if (result.length === 0) {
         resolve(400);
