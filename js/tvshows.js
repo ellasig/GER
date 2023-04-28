@@ -32,7 +32,7 @@ async function getTVShows() {
 
             const tvshowSeasons = document.createElement("p");
             tvshowSeasons.classList.add("tv-show-length");
-            tvshowSeasons.textContent = `Length ${tvshow.length}`;
+            tvshowSeasons.textContent = `${tvshow.length}`;
             tvshowInfo.appendChild(tvshowSeasons);
 
             const tvshowDescription = document.createElement("p");

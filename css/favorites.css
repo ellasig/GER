@@ -18,6 +18,9 @@ body {
 	align-items: center;
 }
 
+#search-form {
+	display: flex;
+}
 .topnav input[type='text'] {
 	padding: 6px;
 	margin-top: 8px;
