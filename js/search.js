@@ -1,18 +1,8 @@
 const searchForm = document.querySelector("#search-form");
 const searchInput = document.querySelector("#search-input");
-const contentContainer = document.querySelector("#content-container");
 
 async function getSpecificContent() {
     try {
-        if (searchInput.value) {
-            tvshowContainer.style.display = "none";
-            contentContainer.style.display = "block";
-        } else {
-            tvshowContainer.style.display = "block";
-            contentContainer.style.display = "none";
-            return;
-        }
-
         const response = await fetch(`http://localhost:3000/getSpecificcontent?name=${searchInput.value}`);
         const data = await response.json();
 
@@ -24,7 +14,6 @@ async function getSpecificContent() {
             contentContainer.appendChild(noResultsMessage);
             return;
         }
-
 
         data.forEach((item) => {
             const contentCard = document.createElement("div");
