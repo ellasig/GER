@@ -1,5 +1,6 @@
 const searchForm = document.querySelector("#search-form");
 const searchInput = document.querySelector("#search-input");
+const contentContainer = document.querySelector("#content-container")
 
 async function getSpecificContent() {
     try {
