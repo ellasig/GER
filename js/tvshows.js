@@ -1,4 +1,3 @@
-
 const tvshowContainer = document.querySelector("#tv-show-container");
 let tvshows = [];
 
