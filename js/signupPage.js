@@ -25,3 +25,36 @@ function showButtons(){
 		position = 0;
 	}
 }
+
+
+/* Sends a HTTP request to log in, server returns a JWT token that is stored on
+local storage */
+function loginUser() {
+	if (validate()) {
+		const url = "http://localhost:5000/loginUser";
+    fetch(url, {
+      method: "POST",
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+      body: JSON.stringify({
+        username: document.getElementById("loginUsername").value,
+        pass: document.getElementById("loginPassword").value
+      })
+    })
+		.then(res => {return res.json()})
+        .then((res) => {
+					console.log(res)
+          localStorage.setItem('loginToken', res.accessToken);
+    })
+        .catch(err => {
+          console.error(err);
+    });
+	}
+}
+
+// TODO validate user input
+function validate() {
+	return true;
+}

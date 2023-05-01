@@ -1,6 +1,6 @@
 const express = require('express');
 
-const pool = require("../routes/mysql");
+const conn = require("./mysql");
 const {stringify} = require('nodemon/lib/utils');
 const router = express.Router();
 
@@ -9,12 +9,18 @@ const bcrypt = require("bcrypt");
 const mysql = require("mysql");
 const {user} = require('../config/db_config');
 
-router.put('/addUser', function (req, res) {
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+router.put('/addUser', upload.single('image'), function (req, res) {
   bcrypt.hash(req.body.pass, 10, function(err, hash) {
-    let sql = "INSERT INTO users (username, email, pass, isAdmin) VALUES (?,?,?,0)";
+    const pathPrefix = "http://localhost:5000/";
+    let sql = "INSERT INTO users (username, email, pass, profile_pic, isAdmin) VALUES (?,?,?,?,0)";
+
+    let profilePic = pathPrefix + req.file.filename;
 
     try {
-      pool.query(sql, [req.body.username, req.body.email, hash], function (err) {
+      conn.query(sql, [req.body.username, req.body.email, hash, profilePic], function (err) {
         if (err) {
           res.status(400).send({
             text: "Error adding user"
@@ -29,28 +35,41 @@ router.put('/addUser', function (req, res) {
   });
 });
 
+router.get('/getUserProfile', function(req, res) {
+  let q = req.query.name;
+  let sql = "SELECT username, profile_pic FROM users WHERE user_id = '" + q + "'";
+
+  conn.query(sql, function (err, result) {
+    if (err) throw err;
+    else {
+      res.status(200).json(result);
+    }
+  });
+});
+
 
 // TODO Modify edit to hash pass
-router.patch('/editUser', function (req, res) {
-  let sql = "INSERT INTO users (username, email, pass) VALUES (?,?,?,0)";
+router.patch('/editUser', upload.single('image'), function (req, res) {
+  const pathPrefix = "http://localhost:5000/";
+  let sql = "INSERT INTO users (username, email, pass, profile_pic, isAdmin) VALUES (?,?,?,?,0)";
+
+  let profilePic = pathPrefix + req.file.filename;
+
   let hashPass = req.body.pass;
 
-  hashPass = hashPass;
-
-  pool.query(sql, [req.body.username, req.body.email, hashPass], function (err, result) {
+  conn.query(sql, [req.body.username, req.body.email, hashPass, profilePic], function (err, result) {
     if (err) {
       res.status(400).send({
         text: "Error editing user"
       });
     } else {
-      res.status(200).send("PATCH successful");
+      res.status(200).semd("PATCH successful");
     }
   });
 });
 
 router.get('/authenticateUser', function(req, res) {
   let auth = authenticate(req.body.accessToken);
-  console.log(auth === 1);
   if(auth === 2) {
     res.status(200).json({text: "User is admin", admin: 1});
   } else if (auth === 1) {
@@ -84,7 +103,7 @@ function getHash(body) {
 
   // Returns a promise with hash
   return new Promise(function (resolve) {
-    pool.query(sql, function (err, result) {
+    conn.query(sql, function (err, result) {
       if (err) throw err;
       if (result.length === 0) {
         resolve(400);

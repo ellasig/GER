@@ -39,7 +39,7 @@ router.get('/getAllcontent', function (req, res) {
 
 router.get('/getSpecificcontent', function (req, res) {
   let q = req.query.name;
-  let sql = "SELECT * FROM content WHERE name = '" + q + "'";
+  let sql = "SELECT * FROM content WHERE name LIKE '%" + q + "%'";
 
   conn.query(sql, function (err, result) {
     if (err) throw err;
