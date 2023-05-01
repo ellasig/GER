@@ -1,9 +1,16 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato&display=swap');
+/*
+ Fonts in use
+ font-family: 'Abril Fatface', cursive;
+ font-family: 'Lato', sans-serif;
+ */
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 body {
 	margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Lato', sans-serif;
 }
 .topnav {
 	display: flex;
@@ -117,11 +124,6 @@ body {
 	margin-bottom: 10px;
 }
 
-.tv-show-year {
-	font-size: 18px;
-	font-weight: bold;
-	margin-bottom: 10px;
-}
 
 .tv-show-length {
 	font-size: 16px;
@@ -134,21 +136,6 @@ body {
 	margin-bottom: 20px;
 }
 
-.watch-trailer {
-	background-color: #FF2d2d;
-	color: #fff;
-	border: none;
-	padding: 8px 16px;
-	font-size: 14px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	margin-left: auto;
-	border-radius: 5px;
-}
-
-.watch-trailer:hover {
-	background-color: #d32f2f;
-}
 
 @media (max-width: 768px) {
 	/* On small screens, stack the TV show card vertically */

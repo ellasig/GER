@@ -1,13 +1,14 @@
-const mysql = require('mysql');
-const util = require('util');
-
-//MySQL's connection parameters (server, login etc.) are stored in db.config.js file
-const dbConfig = require("../../config/db_config.js");
-
-const conn = mysql.createConnection(dbConfig);
-util.promisify(conn.query).bind(conn);
-conn.connect((err) => {
-  if (err) throw err
+const mysql = require('mysql2');
+require('dotenv').config();
+console.log(process.env.user);
+const conn = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
 
 module.exports = conn;
