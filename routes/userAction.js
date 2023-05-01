@@ -7,7 +7,7 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const mysql = require("mysql");
-const {user} = require('../config/db_config');
+const {user} = require('../../config/db_config');
 
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
