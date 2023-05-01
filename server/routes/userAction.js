@@ -70,10 +70,10 @@ router.patch('/editUser', upload.single('image'), function (req, res) {
 
 router.get('/authenticateUser', function(req, res) {
   let auth = authenticate(req.body.accessToken);
-  if(auth === 2) {
-    res.status(200).json({text: "User is admin", admin: 1});
-  } else if (auth === 1) {
-    res.status(200).json({text: "User is authenticated", admin: 0});
+  if(auth[1] === 2) {
+    res.status(200).json({text: "User is admin", name: auth[0], admin: 1});
+  } else if (auth[1] === 1) {
+    res.status(200).json({text: "User is authenticated", name: auth[0], admin: 0});
   } else {
     res.status(401).send("User not authenticated");
   }
@@ -116,16 +116,15 @@ function getHash(body) {
 
 function authenticate(token) {
   return jwt.verify(token, process.env.TOKEN_ADMIN, function(err, decoded) {
-    if (decoded !== undefined) return 2
+    console.log(decoded);
+    if (decoded !== undefined) return [decoded.name, 2]
     else {
       return jwt.verify(token, process.env.TOKEN_SECRET, function(err, decoded) {
-        if (decoded !== undefined) return 1
+        if (decoded !== undefined) return [decoded.name, 1]
         else return 0
       });
     }
   });
-
-
 }
 
 module.exports = router;
