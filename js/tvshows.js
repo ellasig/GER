@@ -1,4 +1,4 @@
-const tvshowContainer = document.querySelector("#tv-show-container");
+const contentContainer = document.querySelector("#tv-show-container");
 let tvshows = [];
 
 async function getTVShows() {
@@ -41,7 +41,7 @@ async function getTVShows() {
 
             tvshowCard.appendChild(tvshowInfo);
 
-            tvshowContainer.appendChild(tvshowCard);
+            contentContainer.appendChild(tvshowCard);
         });
     } catch (error) {
         console.error(error);
