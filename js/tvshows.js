@@ -4,7 +4,7 @@ let tvshows = [];
 
 async function getTVShows() {
     try {
-        const response = await fetch("http://localhost:3000/getTVShows");
+        const response = await fetch("/app/getTVShows");
         const data = await response.json();
 
         tvshows = data;

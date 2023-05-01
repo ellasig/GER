@@ -1,9 +1,10 @@
 const movieContainer = document.querySelector("#movie-container");
 let movies = [];
 
+
 async function getMovies() {
     try {
-        const response = await fetch("http://localhost:3000/getMovies");
+        const response = await fetch("/app/getMovies");
         const data = await response.json();
 
         movies = data;

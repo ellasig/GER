@@ -5,9 +5,9 @@ const app = express();
 const cors = require('cors');
 
 app.use(cors());
-
-const dotenv = require('dotenv')
-dotenv.config()
+app.use(express.static('/home/jerehip/web-assignments'));
+//const dotenv = require('dotenv')
+//dotenv.config()
 
 const port = 3000;
 
