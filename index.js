@@ -22,4 +22,4 @@ const serverRoutes = [contentAction, ratingAction, userAction];
 app.use("/", serverRoutes);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
+console.log(process.env.DB_USER);
