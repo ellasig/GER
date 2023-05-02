@@ -1,7 +1,11 @@
 const searchForm = document.querySelector("#search-form");
 const searchInput = document.querySelector("#search-input");
 
-
+//getSpecificContent handles a search form submission event.
+//It retrieves specific content data from the server by sending a get request to the server with a search query parameter based on the user input from the search form input.
+//search results are then dynamically rendered onto the HTML document by creating and appending content cards for each returned data item.
+//If no search results are found, a message indicating so is displayed.
+//function is executed when the search form is done.
 async function getSpecificContent() {
     try {
         const response = await fetch(`/app/getSpecificcontent?name=${searchInput.value}`);

@@ -4,6 +4,7 @@ const conn = require("./mysql");
 const {stringify} = require('nodemon/lib/utils');
 const router = express.Router();
 
+//endpoints
 router.get('/getMovies', function (req, res) {
   let sql = "SELECT * FROM content WHERE type = 'movie'";
 
@@ -37,6 +38,7 @@ router.get('/getAllcontent', function (req, res) {
   });
 });
 
+//gets specificcontent from db
 router.get('/getSpecificcontent', function (req, res) {
   let q = req.query.name;
   let sql = "SELECT * FROM content WHERE name LIKE '%" + q + "%'";

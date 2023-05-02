@@ -1,7 +1,9 @@
 const movieContainer = document.querySelector("#movie-container");
 let movies = [];
 
-
+//getMovies() retrieves data from a server endpoint /getMovies using the fetch.
+//It then creates an HTML element for each movie item in the data, and appends it to the movieContainer element in the DOM.
+//The function is invoked at the end of the script to display the movie content on the web page.
 async function getMovies() {
     try {
         const response = await fetch("/app/getMovies");

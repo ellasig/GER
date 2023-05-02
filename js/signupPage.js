@@ -4,6 +4,7 @@
 // position 2 = sign up form
 let position = 0;
 
+//showLogin() and showSignup() are responsible for displaying the login and signup forms.
 function showLogin(){
 	document.getElementById("login").style.display = "flex";
 	document.getElementById("buttons").style.display = "none";

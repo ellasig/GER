@@ -1,6 +1,9 @@
 const contentContainer = document.querySelector("#content-container");
 let content = [];
 
+//getAllContent() retrieves data from a server endpoint /getAllContent
+//using the fetch. It then sorts the data based on the name property in ascending order, creates an HTML element for each item in the data, and appends it to the contentContainer element in the DOM.
+//The function is invoked at the end of the script to display the content on the web page.
 async function getAllContent() {
     try {
         const response = await fetch("/app/getAllContent");

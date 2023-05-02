@@ -1,6 +1,9 @@
 const tvshowContainer = document.querySelector("#tv-show-container");
 let tvshows = [];
 
+//getTvshows() retrieves data from a server endpoint /getTVshows using the fetch.
+//It then creates an HTML element for each movie item in the data, and appends it to the tvshowcontainer element in the DOM.
+//The function is invoked at the end of the script to display the movie content on the web page.
 async function getTVShows() {
     try {
         const response = await fetch("/app/getTVShows");
