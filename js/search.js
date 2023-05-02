@@ -1,9 +1,10 @@
 const searchForm = document.querySelector("#search-form");
 const searchInput = document.querySelector("#search-input");
 
+
 async function getSpecificContent() {
     try {
-        const response = await fetch(`http://localhost:3000/getSpecificcontent?name=${searchInput.value}`);
+        const response = await fetch(`/app/getSpecificcontent?name=${searchInput.value}`);
         const data = await response.json();
 
         contentContainer.innerHTML = "";

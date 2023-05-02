@@ -3,7 +3,7 @@ let content = [];
 
 async function getAllContent() {
     try {
-        const response = await fetch("http://localhost:3000/getAllContent");
+        const response = await fetch("/app/getAllContent");
         const data = await response.json();
 
         content = data.sort((a, b) => {

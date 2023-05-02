@@ -14,8 +14,8 @@ const upload = multer({ dest: 'uploads/' });
 
 router.put('/addUser', upload.single('image'), function (req, res) {
   bcrypt.hash(req.body.pass, 10, function(err, hash) {
-    const pathPrefix = "http://localhost:5000/";
-    let sql = "INSERT INTO users (username, email, pass, profile_pic, isAdmin) VALUES (?,?,?,?,0)";
+    const pathPrefix = "/";
+    let sql = "INSERT INTO user (username, email, pass, profile_pic, isAdmin) VALUES (?,?,?,?,0)";
 
     let profilePic = pathPrefix + req.file.filename;
 
@@ -37,7 +37,7 @@ router.put('/addUser', upload.single('image'), function (req, res) {
 
 router.get('/getUserProfile', function(req, res) {
   let q = req.query.name;
-  let sql = "SELECT username, profile_pic FROM users WHERE user_id = '" + q + "'";
+  let sql = "SELECT username, profile_pic FROM user WHERE user_id = '" + q + "'";
 
   conn.query(sql, function (err, result) {
     if (err) throw err;
@@ -50,8 +50,8 @@ router.get('/getUserProfile', function(req, res) {
 
 // TODO Modify edit to hash pass
 router.patch('/editUser', upload.single('image'), function (req, res) {
-  const pathPrefix = "http://localhost:5000/";
-  let sql = "INSERT INTO users (username, email, pass, profile_pic, isAdmin) VALUES (?,?,?,?,0)";
+  const pathPrefix = "/";
+  let sql = "INSERT INTO user (username, email, pass, profile_pic, isAdmin) VALUES (?,?,?,?,0)";
 
   let profilePic = pathPrefix + req.file.filename;
 
@@ -70,10 +70,10 @@ router.patch('/editUser', upload.single('image'), function (req, res) {
 
 router.get('/authenticateUser', function(req, res) {
   let auth = authenticate(req.body.accessToken);
-  if(auth === 2) {
-    res.status(200).json({text: "User is admin", admin: 1});
-  } else if (auth === 1) {
-    res.status(200).json({text: "User is authenticated", admin: 0});
+  if(auth[1] === 2) {
+    res.status(200).json({text: "User is admin", name: auth[0], admin: 1});
+  } else if (auth[1] === 1) {
+    res.status(200).json({text: "User is authenticated", name: auth[0], admin: 0});
   } else {
     res.status(401).send("User not authenticated");
   }
@@ -99,7 +99,7 @@ router.post('/loginUser', async function(req, res) {
 });
 
 function getHash(body) {
-  let sql = "SELECT pass, isAdmin FROM users WHERE username = " + mysql.escape(body.username);
+  let sql = "SELECT pass, isAdmin FROM user WHERE username = " + mysql.escape(body.username);
 
   // Returns a promise with hash
   return new Promise(function (resolve) {
@@ -116,16 +116,15 @@ function getHash(body) {
 
 function authenticate(token) {
   return jwt.verify(token, process.env.TOKEN_ADMIN, function(err, decoded) {
-    if (decoded !== undefined) return 2
+    console.log(decoded);
+    if (decoded !== undefined) return [decoded.name, 2]
     else {
       return jwt.verify(token, process.env.TOKEN_SECRET, function(err, decoded) {
-        if (decoded !== undefined) return 1
+        if (decoded !== undefined) return [decoded.name, 1]
         else return 0
       });
     }
   });
-
-
 }
 
 module.exports = router;
