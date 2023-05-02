@@ -1,7 +1,7 @@
 # Movie rating / Info website
-This site lists movies and tv shows added by the admins. 
-Users can create accounts to save movies to favorites. (not working)
-Admin users can add movies to the website (not working)
+This is a movie and TV show information website that provides users with a list of movies and TV shows added by the administrators. Users can browse through the available movies and TV shows and view their ratings, favorites and other information.
+
+Adding movies, implementing the favorites and ratings features are currently in progress.
 
 ## Setting up the application
 	Create database with script found in /database-config
