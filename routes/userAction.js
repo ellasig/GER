@@ -15,7 +15,7 @@ const upload = multer({ dest: 'uploads/' });
 router.put('/addUser', upload.single('image'), function (req, res) {
   bcrypt.hash(req.body.pass, 10, function(err, hash) {
     const pathPrefix = "/";
-    let sql = "INSERT INTO user (username, email, pass, profile_pic, isAdmin) VALUES (?,?,?,?,0)";
+    let sql = "INSERT INTO user (username, email, pass, profilepicture, isAdmin) VALUES (?,?,?,?,0)";
 
     let profilePic = pathPrefix + req.file.filename;
 
@@ -25,6 +25,28 @@ router.put('/addUser', upload.single('image'), function (req, res) {
           res.status(400).send({
             text: "Error adding user"
           });
+        } else {
+          res.status(200).send("POST successful");
+        }
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  });
+});
+
+router.post('/addUser', function (req, res) {
+  bcrypt.hash(req.body.pass, 10, function(err, hash) {
+    const pathPrefix = "/";
+    let sql = "INSERT INTO user (username, email, pass, profilepicture, isAdmin) VALUES (?,?,?,NULL,0)";
+
+    try {
+      conn.query(sql, [req.body.username, req.body.email, hash], function (err) {
+        if (err) {
+          res.status(400).send({
+            text: "Error adding user"
+          });
+          console.log(err);
         } else {
           res.status(200).send("POST successful");
         }

@@ -105,3 +105,7 @@ button#back {
     left: 0;
     width: 20%;
 }
+#loggedIn {
+	display: none; 
+}
+

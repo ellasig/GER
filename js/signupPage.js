@@ -2,6 +2,7 @@
 // position 0 = login and sign up buttons
 // position 1 = login form
 // position 2 = sign up form
+// position 3 = profile
 let position = 0;
 
 function showLogin(){
@@ -25,13 +26,32 @@ function showButtons(){
 		position = 0;
 	}
 }
-
+async function showProfile(){
+	// const loggedIn = sessionStorage.getItem("loggedIn") === "true";
+	const accessToken = sessionStorage.getItem("loginToken");
+	const isLogged = await fetch("/authenticateUser", {
+		method: "GET",
+		body: JSON.stringify({
+			accessToken: accessToken,
+		})
+	});
+	if (isLogged.text!==undefined) {
+		document.getElementById("login").style.display = "none";
+		document.getElementById("signup").style.display = "none";
+		document.getElementById("loggedIn").style.display = "flex";
+		position = 3;
+	}else{
+		document.getElementById("loggedIn").style.display = "none";
+		document.getElementById("buttons").style.display = "flex";
+		position = 0;
+	}
+}
 
 /* Sends a HTTP request to log in, server returns a JWT token that is stored on
 local storage */
 function loginUser() {
 	if (validate()) {
-		const url = "/loginUser";
+		const url = "/app/loginUser";
     fetch(url, {
       method: "POST",
 			headers: {
@@ -58,3 +78,5 @@ function loginUser() {
 function validate() {
 	return true;
 }
+
+
