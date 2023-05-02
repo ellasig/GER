@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 'use strict';
 const express = require('express');
 const app = express();
@@ -29,6 +29,5 @@ const serverRoutes = [contentAction, ratingAction, userAction, imageAction];
 app.use("/", serverRoutes);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-=======
-console.log(":D")
->>>>>>> 7d06376 (Initial commit)
+
+
