@@ -1,9 +1,14 @@
+'use strict';
+const sharp = require('sharp');
 
-// Signup Button
-const signUpButton = document.querySelector('#signup button[type="submit"]');
+const form = document.querySelector('#sign');
+const fileInput = document.querySelector('input[type="file"]');
+const signUpButton = document.querySelector('#sign button[type="submit"]');
 
 const emailCheck = await fetch("http://localhost:3000/checkEmail");
 const usernameCheck = await fetch("http://localhost:3000/checkUsername");
+
+// Signup Button
 
 signUpButton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -19,6 +24,7 @@ signUpButton.addEventListener('click', (event) => {
     const passwordValue = passwordInput.value;
     const passwordCheckValue = passwordCheckInput.value;
 
+    form.action = 'http://localhost:3000/upload'; // Kys.. ei oo mitää hajuu toimiiko näin, vois kai testaa.
     // Checks input information's.
     if (passwordValue !== passwordCheckValue || passwordValue.length() < 8) {
         alert('Password is too short or passwords do not match.');
@@ -32,7 +38,6 @@ signUpButton.addEventListener('click', (event) => {
         alert('Invalid username or username already exists');
         return;
     }
-
     form.action = 'http://localhost:3000/addUser';
     form.submit();
 });

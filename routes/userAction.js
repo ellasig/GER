@@ -13,9 +13,9 @@ const conn = require("./mysql");
 const {emailInput, usernameInput} = require('../js/signupPage.js');
 
 router.post('/addUser', function (req, res) {
-    let sql = "INSERT INTO users (user_id, username, email, pass, isAdmin) VALUES (?,?,?,?,0)";
+    let sql = "INSERT INTO users (user_id, username, email, pass, profilepicture, isAdmin) VALUES (?,?,?,?,?,0)";
     try {
-      pool.query(sql, [null, req.body.username, req.body.email, req.body.password], function (err) {
+      pool.query(sql, [null, req.body.username, req.body.email, req.body.password, req.body.profilePic], function (err) {
         if (err) {
           res.status(400).send({
             text: "Error adding user"

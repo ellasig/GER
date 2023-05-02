@@ -4,7 +4,7 @@ const conn = require("./mysql");
 const {stringify} = require('nodemon/lib/utils');
 const router = express.Router();
 
-const {userID,contentID,userRating} = require('./home.js');
+const {userID,contentID,userRating} = require('../js/home.js');
 
 //   Adds liked content to favorites.
 router.post('/rateContent', function(req, res) {
