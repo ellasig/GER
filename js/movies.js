@@ -1,4 +1,4 @@
-const movieContainer = document.querySelector("#movie-container");
+const contentContainer = document.querySelector("#movie-container");
 let movies = [];
 
 async function getMovies() {
@@ -41,7 +41,7 @@ async function getMovies() {
 
             movieCard.appendChild(movieInfo);
 
-            movieContainer.appendChild(movieCard);
+            contentContainer.appendChild(movieCard);
         });
     } catch (error) {
         console.error(error);
