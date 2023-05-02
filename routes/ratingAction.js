@@ -4,9 +4,11 @@ const conn = require("./mysql");
 const {stringify} = require('nodemon/lib/utils');
 const router = express.Router();
 
+const {userID,contentID,userRating} = require('./home.js');
+
 //   Adds liked content to favorites.
-router.put('/rateContent', function(req, res) {
-    const {userID,contentID,userRating} = require('./home.js');
+router.post('/rateContent', function(req, res) {
+
     let sql = "INSERT INTO user_content (user_id, content_id, user_rating) VALUES (?,?,?)";
     let values = [userID, contentID, userRating];
     conn.query(sql, values, function (err, result) {
@@ -21,7 +23,7 @@ router.put('/rateContent', function(req, res) {
 });
 //   Removes content from favorites
 router.delete('/unrateContent', function (req, res) {
-    let {userID,contentID,userRating} = require('./home.js');
+
     let sql = "DELETE FROM user_content WHERE user_id = ? AND content_id = ?";
     let values = [userID, contentID];
     conn.query(sql, values, function (err, result) {
@@ -36,10 +38,9 @@ router.delete('/unrateContent', function (req, res) {
 });
 //   Selects favorite content.
 router.get('/getFavorites', function (req, res) {
-    let {userID,contentID,userRating} = require('./home.js');
+
     let sql = "SELECT * FROM user_content WHERE user_id = ?";
     let values = [userID];
-
     conn.query(sql, values, function (err, result) {
         if (err) throw err;
         else {

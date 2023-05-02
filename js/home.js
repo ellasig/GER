@@ -73,20 +73,18 @@ async function getAllContent() {
                     favoriteButton.innerHTML = '<i class="fas fa-heart"></i> Remove from Favorites';
                     const userID = isLoggedin // KESKEN itemillä ei ole user_id. user_id tarvitaan.
                     const contentID = item.content_id;
-                    const userRating = 1; // EI VÄLTTÄMÄTTÄ TARVITSE. jos hard koodaa +1 in /rateContent.
+                    const userRating = 1;
                     module.exports = userID;
                     module.exports = contentID;
                     module.exports = userRating;
                     fetch("http://localhost:3000/rateContent");
                 } else {
                     favoriteButton.innerHTML = '<i class="fas fa-heart"></i> Add to Favorites';
-
                     fetch("http://localhost:3000/unrateContent");
                 }
             };
 
             toggleButtonText(); // Set the initial button text based on whether the movie is in favorites
-
         });
     } catch (error) {
         console.error(error);
