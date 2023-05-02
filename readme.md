@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Movie rating / Info website
 This site lists movies and tv shows added by the admins. 
 Users can create accounts to save movies to favorites. (not working)
@@ -17,3 +18,7 @@ Admin users can add movies to the website (not working)
 	Admin user - logged in:
 		Can add and remove movies and tv shows.
 		(currently not working still work in progress)
+=======
+# BCWT Examples
+
+>>>>>>> 7d06376 (Initial commit)
