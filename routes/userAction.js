@@ -63,7 +63,7 @@ router.patch('/editUser', upload.single('image'), function (req, res) {
         text: "Error editing user"
       });
     } else {
-      res.status(200).send("PATCH successful");
+      res.status(200).semd("PATCH successful");
     }
   });
 });

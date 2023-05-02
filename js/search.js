@@ -9,8 +9,6 @@ async function getSpecificContent() {
 
         contentContainer.innerHTML = "";
 
-
-
         if (data.length === 0) {
             const noResultsMessage = document.createElement("p");
             noResultsMessage.textContent = "No results found";

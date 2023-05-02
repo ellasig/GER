@@ -27,14 +27,17 @@ body {
 	display: flex;
 	align-items: center;
 }
+#search-form {
+	display: flex;
+}
 
 .topnav input[type='text'] {
 	padding: 6px;
 	margin-top: 8px;
 	font-size: 17px;
 	border: none;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 .topnav .search-container button {
@@ -46,12 +49,12 @@ body {
 	font-size: 17px;
 	border: none;
 	cursor: pointer;
-    border-radius: 5px;
+	border-radius: 5px;
 }
 
 .topnav .search-container .search{
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
 }
 
 .topnav .search-container button:hover {
