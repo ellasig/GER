@@ -1,6 +1,7 @@
 # Movie rating / Info website
-This site has movie ratings and basic info about movies. 
-Users can create accounts to give ratings to movies and save movies to favorites.
+This site lists movies and tv shows added by the admins. 
+Users can create accounts to save movies to favorites. (not working)
+Admin users can add movies to the website (not working)
 
 ## Setting up the application
 	Create database with script found in /database-config
@@ -8,4 +9,11 @@ Users can create accounts to give ratings to movies and save movies to favorites
 	.env-example file has base of .env file to create 
 
 ## User functions 
-	TODO: add info about different users
+	Normal user - not logged in:
+		Can see a list of movies and tv shows.
+	Normal user - logged in:
+		Can add movies to favourites and add a profile picture.
+		(currently not working still work in progress)
+	Admin user - logged in:
+		Can add and remove movies and tv shows.
+		(currently not working still work in progress)

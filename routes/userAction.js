@@ -14,8 +14,8 @@ const upload = multer({ dest: 'uploads/' });
 
 router.put('/addUser', upload.single('image'), function (req, res) {
   bcrypt.hash(req.body.pass, 10, function(err, hash) {
-    const pathPrefix = "http://localhost:5000/";
-    let sql = "INSERT INTO users (username, email, pass, profile_pic, isAdmin) VALUES (?,?,?,?,0)";
+    const pathPrefix = "/";
+    let sql = "INSERT INTO user (username, email, pass, profile_pic, isAdmin) VALUES (?,?,?,?,0)";
 
     let profilePic = pathPrefix + req.file.filename;
 
@@ -37,7 +37,7 @@ router.put('/addUser', upload.single('image'), function (req, res) {
 
 router.get('/getUserProfile', function(req, res) {
   let q = req.query.name;
-  let sql = "SELECT username, profile_pic FROM users WHERE user_id = '" + q + "'";
+  let sql = "SELECT username, profile_pic FROM user WHERE user_id = '" + q + "'";
 
   conn.query(sql, function (err, result) {
     if (err) throw err;
@@ -50,8 +50,8 @@ router.get('/getUserProfile', function(req, res) {
 
 // TODO Modify edit to hash pass
 router.patch('/editUser', upload.single('image'), function (req, res) {
-  const pathPrefix = "http://localhost:5000/";
-  let sql = "INSERT INTO users (username, email, pass, profile_pic, isAdmin) VALUES (?,?,?,?,0)";
+  const pathPrefix = "/";
+  let sql = "INSERT INTO user (username, email, pass, profile_pic, isAdmin) VALUES (?,?,?,?,0)";
 
   let profilePic = pathPrefix + req.file.filename;
 
@@ -63,7 +63,7 @@ router.patch('/editUser', upload.single('image'), function (req, res) {
         text: "Error editing user"
       });
     } else {
-      res.status(200).semd("PATCH successful");
+      res.status(200).send("PATCH successful");
     }
   });
 });
@@ -99,7 +99,7 @@ router.post('/loginUser', async function(req, res) {
 });
 
 function getHash(body) {
-  let sql = "SELECT pass, isAdmin FROM users WHERE username = " + mysql.escape(body.username);
+  let sql = "SELECT pass, isAdmin FROM user WHERE username = " + mysql.escape(body.username);
 
   // Returns a promise with hash
   return new Promise(function (resolve) {

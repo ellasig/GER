@@ -112,3 +112,64 @@ section i {
     border: 0;
     padding: 0;
 }
+
+
+
+/* movie and tv show cards */
+.content-card {
+	display: flex;
+	flex-direction: row;
+	margin: 4vh auto;
+	max-width: 800px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	padding: 6vh 3%;
+	border-radius: 5px;
+}
+
+/* poster */
+.content-card img {
+	width: 200px;
+	height: 300px;
+	object-fit: cover;
+	margin-right: 16px;
+	border-radius: 5px;
+}
+
+/* information */
+.content-info {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.content-title {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+
+.content-length {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.content-description {
+	font-size: 16px;
+	line-height: 1.5;
+	margin-bottom: 20px;
+}
+
+
+@media (max-width: 768px) {
+	/* On small screens, stack the TV show card vertically */
+	.content-card {
+		flex-direction: column;
+	}
+
+	.content-card img {
+		width: 50%;
+		height: 50%;
+		margin: auto;
+	}
+}

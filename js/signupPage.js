@@ -31,7 +31,7 @@ function showButtons(){
 local storage */
 function loginUser() {
 	if (validate()) {
-		const url = "http://localhost:5000/loginUser";
+		const url = "/loginUser";
     fetch(url, {
       method: "POST",
 			headers: {

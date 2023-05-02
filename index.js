@@ -10,7 +10,11 @@ app.use(cors());
 
 app.use(express.static(__dirname+'/uploads'));
 
-const port = 5000;
+app.use(express.static('/home/jerehip/web-assignments'));
+//const dotenv = require('dotenv')
+//dotenv.config()
+
+const port = 3000;
 
 app.use(express.json());
 
@@ -24,4 +28,3 @@ const serverRoutes = [contentAction, ratingAction, userAction, imageAction];
 app.use("/", serverRoutes);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-

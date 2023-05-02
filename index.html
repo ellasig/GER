@@ -4,6 +4,7 @@
 		<title>HOME</title>
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
         <script src="https://kit.fontawesome.com/bbf885e47c.js" crossorigin="anonymous"></script>
+
 	</head>
 
 	<body>
@@ -14,12 +15,17 @@
 				
 			</div>
 			<div class="search-container">
-				<input type="text" placeholder="Search for movie..." name="search" />
-				<button type="submit" class="search"><i class="fa fa-search"></i></button>
+
+				<form id="search-form">
+					<label for="search-input">Search by name:</label>
+					<input type="text" placeholder="Search by title..." id="search-input" name="search-input">
+					<button type="submit"><i class="fa fa-search"></i></button>
+				</form>
+
 				<a href="favorites.html">
 					<button class="favorites"><i class="fa fa-star-o"></i></button>
 				</a>
-				<a href="signin.html">
+				<a href="/app/signin.html">
 					<button class="profile">
 						<i class="fa-solid fa-user"></i>
 					</button>
@@ -34,10 +40,9 @@
             </div>
         </section>
         <div id="main">
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-            <div class="movie-card"></div>
-        </div>
+			<div id="content-container"></div>
+			<script src="js/home.js"></script>
+		</div>
+	<script src="js/search.js"></script>
 	</body>
 </html>
