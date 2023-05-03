@@ -12,36 +12,16 @@ const {user} = require('../config/db_config');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 
-router.put('/addUser', upload.single('image'), function (req, res) {
+
+
+router.post('/addUser', upload.single('photo-file'), function (req, res) {
   bcrypt.hash(req.body.pass, 10, function(err, hash) {
     const pathPrefix = "/";
     let sql = "INSERT INTO user (username, email, pass, profilepicture, isAdmin) VALUES (?,?,?,?,0)";
-
-    let profilePic = pathPrefix + req.file.filename;
-
-    try {
-      conn.query(sql, [req.body.username, req.body.email, hash, profilePic], function (err) {
-        if (err) {
-          res.status(400).send({
-            text: "Error adding user"
-          });
-        } else {
-          res.status(200).send("POST successful");
-        }
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  });
-});
-
-router.post('/addUser', function (req, res) {
-  bcrypt.hash(req.body.pass, 10, function(err, hash) {
-    const pathPrefix = "/";
-    let sql = "INSERT INTO user (username, email, pass, profilepicture, isAdmin) VALUES (?,?,?,NULL,0)";
+	let profilePic = pathPrefix + req.file.filename;
 
     try {
-      conn.query(sql, [req.body.username, req.body.email, hash], function (err) {
+      conn.query(sql, [req.body.username, req.body.email, hash, profilepicture], function (err) {
         if (err) {
           res.status(400).send({
             text: "Error adding user"

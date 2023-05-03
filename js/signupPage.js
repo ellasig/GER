@@ -46,6 +46,27 @@ async function showProfile(){
 		position = 0;
 	}
 }
+function signUp() {
+	const url = "/app/addUser";
+	let photoInput = document.querySelector("photo-file");
+	let formData = new FormData();
+	console.log(photoInput);
+	formData.append("username", document.getElementsByName("username")[1].value);
+	formData.append("email", document.getElementsByName("email")[0].value);
+	formData.append("pass", document.getElementsByName("password")[0].value);
+	formData.append("image", photoInput.files[0]);
+
+
+	fetch(url, {
+			method: "POST",
+			body: formData
+			}).then(r => {
+					return r.json()
+			}).then(r => {
+					alert(r);
+	});
+
+}
 
 /* Sends a HTTP request to log in, server returns a JWT token that is stored on
 local storage */
@@ -78,5 +99,6 @@ function loginUser() {
 function validate() {
 	return true;
 }
+
 
 

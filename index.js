@@ -9,7 +9,7 @@ dotenv.config();
 const cors = require('cors');
 app.use(cors());
 
-app.use(express.static(__dirname+'/uploads'));
+app.use('/uploads', express.static('uploads'));
 
 app.use(express.static('/home/jerehip/web-assignments'));
 //const dotenv = require('dotenv')
